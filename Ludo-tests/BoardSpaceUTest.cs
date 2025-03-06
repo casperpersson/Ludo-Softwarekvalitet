@@ -1,14 +1,11 @@
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 
 namespace Ludo_tests
 {
     [TestClass]
     public class UnitTest1
     {
-        [TestMethod]
-        public void TestMethod1()
-        {
-        }
+
         [TestMethod]
         public void BoardSpaceAddlinkToNextBoardSpace()
         {
@@ -32,7 +29,7 @@ namespace Ludo_tests
         }
 
         [TestMethod]
-        public void TokenMoveToBoardSpace()
+        public void BoardSpaceTokenMoveUnto()
         {
             BoardSpace boardSpace1 = new BoardSpace();
             Token token1 = new Token();
@@ -43,7 +40,7 @@ namespace Ludo_tests
         }
 
         [TestMethod]
-        public void TokenMoveOffBoardSpace()
+        public void BoardSpaceTokenMoveOff()
         {
             BoardSpace boardSpace1 = new BoardSpace();
             BoardSpace boardSpace2 = new BoardSpace();
