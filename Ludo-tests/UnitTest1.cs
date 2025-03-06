@@ -31,6 +31,28 @@ namespace Ludo_tests
             Assert.AreNotSame(boardSpace1, boardSpace2);
         }
 
+        [TestMethod]
+        public void TokenMoveToBoardSpace()
+        {
+            BoardSpace boardSpace1 = new BoardSpace();
+            Token token1 = new Token();
 
+            token1.MoveTo(boardSpace1);
+
+            Assert.IsTrue(boardSpace1.tokens.Contains(token1));
+        }
+
+        [TestMethod]
+        public void TokenMoveOffBoardSpace()
+        {
+            BoardSpace boardSpace1 = new BoardSpace();
+            BoardSpace boardSpace2 = new BoardSpace();
+            Token token1 = new Token();
+
+            token1.MoveTo(boardSpace1);
+            token1.MoveTo(boardSpace2);
+
+            Assert.IsFalse(boardSpace1.tokens.Contains(token1));
+        }
     }
 }
