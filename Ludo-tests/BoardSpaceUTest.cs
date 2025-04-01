@@ -34,22 +34,22 @@ namespace Ludo_tests
             BoardSpace boardSpace1 = new BoardSpace();
             Token token1 = new Token();
 
-            token1.MoveTo(boardSpace1);
+            boardSpace1.ReciveToken(token1);
+            boardSpace1.GetTokens();
 
-            Assert.IsTrue(boardSpace1.tokens.Contains(token1));
+            Assert.IsTrue(boardSpace1.GetTokens().Contains(token1));
         }
 
         [TestMethod]
         public void BoardSpaceTokenMoveOff()
         {
             BoardSpace boardSpace1 = new BoardSpace();
-            BoardSpace boardSpace2 = new BoardSpace();
             Token token1 = new Token();
 
-            token1.MoveTo(boardSpace1);
-            token1.MoveTo(boardSpace2);
+            boardSpace1.ReciveToken(token1);
+            boardSpace1.ReleaseToken(token1);
 
-            Assert.IsFalse(boardSpace1.tokens.Contains(token1));
+            Assert.IsFalse(boardSpace1.GetTokens().Contains(token1));
         }
     }
 }
