@@ -1,3 +1,4 @@
+using Models;
 namespace Ludo_tests
 {
     [TestClass]
@@ -29,40 +30,14 @@ namespace Ludo_tests
             string result = dice.RollAndCheck();
 
             // Assert
-            if (dice.LastRoll == 6)
+            if (dice.Result == 6)
             {
                 Assert.AreEqual("You rolled a 6", result);
             }
             else
             {
-                Assert.AreEqual($"You rolled a {dice.LastRoll}", result);
+                Assert.AreEqual($"You rolled a {dice.Result}", result);
             }
-
-            // Output the result
-            Console.WriteLine(result);
-        }
-    }
-
-    // Placeholder for the Dice class
-    public class Dice
-    {
-        public int LastRoll { get; private set; }
-
-        public int Roll()
-        {
-            Random random = new Random();
-            LastRoll = random.Next(1, 7);
-            return LastRoll;
-        }
-
-        public string RollAndCheck()
-        {
-            int roll = Roll();
-            if (roll == 6)
-            {
-                return "You rolled a 6";
-            }
-            return $"You rolled a {roll}";
         }
     }
 }
