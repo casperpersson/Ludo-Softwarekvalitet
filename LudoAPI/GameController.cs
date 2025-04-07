@@ -3,14 +3,17 @@
     internal class GameController
     {
         public iBoardSpace[] Board { get; set; }
+        public Token playerToken { get; set; } //temp - should be list of players
 
-        public void SetupGameBoard()
+        public int[] SetupGameBoard()
         {
             BoardSpace[] boardspaces = new BoardSpace[4];
+            int[] boardSpacesId = new int[4];
 
             for (int i = 0; i < boardspaces.Length; i++)
             {
-                boardspaces[i] = new BoardSpace();
+                boardspaces[i] = new BoardSpace(i);
+                boardSpacesId[i] = i;
             }
 
             
@@ -27,6 +30,12 @@
             }
 
             Board = boardspaces;
+
+
+            playerToken = new Token();
+            Board[0].ReciveToken(playerToken);
+
+            return boardSpacesId;
         }
     }
 }
