@@ -9,8 +9,8 @@ namespace Ludo_tests
         [TestMethod]
         public void BoardSpaceAddlinkToNextBoardSpace()
         {
-            BoardSpace boardSpace1 = new BoardSpace();
-            BoardSpace boardSpace2 = new BoardSpace();
+            BoardSpace boardSpace1 = new BoardSpace(1);
+            BoardSpace boardSpace2 = new BoardSpace(2);
 
             boardSpace1.NextSpace = boardSpace2;
 
@@ -20,8 +20,8 @@ namespace Ludo_tests
         [TestMethod]
         public void BoardSpaceGetNextBoardSpace()
         {
-            BoardSpace boardSpace1 = new BoardSpace();
-            BoardSpace boardSpace2 = new BoardSpace();
+            BoardSpace boardSpace1 = new BoardSpace(1);
+            BoardSpace boardSpace2 = new BoardSpace(2);
 
             boardSpace1.NextSpace = boardSpace2;
 
@@ -31,7 +31,7 @@ namespace Ludo_tests
         [TestMethod]
         public void BoardSpaceTokenMoveUnto()
         {
-            BoardSpace boardSpace1 = new BoardSpace();
+            BoardSpace boardSpace1 = new BoardSpace(1);
             Token token1 = new Token();
 
             boardSpace1.ReciveToken(token1);
@@ -43,7 +43,7 @@ namespace Ludo_tests
         [TestMethod]
         public void BoardSpaceTokenMoveOff()
         {
-            BoardSpace boardSpace1 = new BoardSpace();
+            BoardSpace boardSpace1 = new BoardSpace(1);
             Token token1 = new Token();
 
             boardSpace1.ReciveToken(token1);

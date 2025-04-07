@@ -7,7 +7,7 @@ namespace Ludo_tests
         [TestMethod]
         public void TokenMoveToBoardSpace()
         {
-            BoardSpace boardSpace1 = new BoardSpace();
+            BoardSpace boardSpace1 = new BoardSpace(1);
             Token token1 = new Token();
 
             token1.MoveTo(boardSpace1);
@@ -18,8 +18,8 @@ namespace Ludo_tests
         [TestMethod]
         public void TokenMovedOffBoardSpace()
         {
-            BoardSpace boardSpace1 = new BoardSpace();
-            BoardSpace boardSpace2 = new BoardSpace();
+            BoardSpace boardSpace1 = new BoardSpace(1);
+            BoardSpace boardSpace2 = new BoardSpace(2);
             Token token1 = new Token();
 
             token1.MoveTo(boardSpace1);

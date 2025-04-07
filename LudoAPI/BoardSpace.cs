@@ -2,12 +2,14 @@
 {
     public class BoardSpace : iBoardSpace
     {
+        public int id { get; set; }
         public iBoardSpace NextSpace { get; set; }
         List<Token> tokens { get; set; }
 
-        public BoardSpace() 
+        public BoardSpace(int id) 
         {
             tokens = new List<Token>();
+            this.id = id;
         }
 
         public void ReciveToken(Token token)
