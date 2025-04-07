@@ -1,10 +1,8 @@
-﻿using System.Collections.Generic;
-
-namespace Ludo_tests
+﻿namespace LudoAPI
 {
     public class BoardSpace : iBoardSpace
     {
-        public iBoardSpace NextSpace { get; internal set; }
+        public iBoardSpace NextSpace { get; set; }
         List<Token> tokens { get; set; }
 
         public BoardSpace() 
