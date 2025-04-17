@@ -31,7 +31,7 @@ namespace Ludo_tests
             stopwatch.Stop();
             var realTime = stopwatch.ElapsedMilliseconds;
 
-            Debug.WriteLine("🔎 MOCKING VS REAL TEST 🔎");
+            Debug.WriteLine(" MOCKING VS REAL TEST ");
             Debug.WriteLine($"Mock: {mockTime} ms");
             Debug.WriteLine($"Real: {realTime} ms");
 
