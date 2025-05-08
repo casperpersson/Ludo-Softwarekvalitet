@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\LudoAPI\LudoAPI.csproj" />
     <ProjectReference Include="..\Models\Models.csproj" />
   </ItemGroup>
 
