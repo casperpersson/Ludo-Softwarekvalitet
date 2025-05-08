@@ -8,6 +8,13 @@ namespace Models
 {
     public class Board
     {
+        public int Size { get; private set; }
+        public List<int> SafeZones { get; } = new List<int> { 0, 10, 20, 30 }; // Example safe zones
+        public Board(int size, bool enableSafeZones)
+        {
+            Size = size;
+            SafeZones = enableSafeZones ? new List<int> { 0, 10, 20, 30 } : new List<int>();
+        }
         private readonly Dictionary<int, int> _startingPositions = new()
     {
         { 0, 0 },  // Player 1 starts at position 0
@@ -22,6 +29,12 @@ namespace Models
         { 2, new List<int> { 48, 49, 50, 51 } }, // Player 3's home positions
         { 3, new List<int> { 52, 53, 54, 55 } }  // Player 4's home positions
     };
+    
+
+    public bool IsSafeZone(int position)
+    {
+        return SafeZones.Contains(position);
+    }
 
         public bool IsHomePosition(int position, int playerIndex)
         {
@@ -39,7 +52,7 @@ namespace Models
             return _startingPositions[playerIndex];
         }
 
-        public List<int> SafeZones { get; } = new() { 0, 10, 20, 30 }; // Example safe zones
+        
     }
 
 }

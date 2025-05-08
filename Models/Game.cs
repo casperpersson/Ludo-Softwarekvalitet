@@ -1,5 +1,6 @@
 ﻿using Models;
 using LudoAPI.Models;
+using System.Reflection;
 namespace LudoAPI.Models
 {
     public class Game
@@ -9,24 +10,36 @@ namespace LudoAPI.Models
         public Player CurrentPlayer => Players[CurrentPlayerIndex];
         public int CurrentPlayerIndex { get; private set; }
         private Dice Dice { get; set; }
+        public Player Winner { get; private set; }
+        public GameSettings Settings { get; private set; }
+
+        public Game(GameSettings settings)
+        {
+            Settings = settings;
+            // Update the constructor call in Game.cs
+            Board = new Board(settings.BoardSize, settings.EnableSafeZones); // Use EnableSafeZones instead of HasSafeZones
+                                                                             // Pass required arguments
+        }
+
 
         public void Initialize()
         {
-            Board = new Board();
+            Board = new Board(Settings.BoardSize, Settings.EnableSafeZones); // Pass required arguments
             Players = new List<Player>();
             Dice = new Dice();
 
-            for (int i = 0; i < 4; i++) // Assuming 4 players
+            for (int i = 0; i < Settings.NumberOfPlayers; i++)
             {
                 var player = new Player
                 {
-                    Tokens = Enumerable.Range(0, 4)
+                    Tokens = Enumerable.Range(0, Settings.TokensPerPlayer)
                         .Select(_ => new Token { State = TokenState.AtStart })
                         .ToList()
                 };
                 Players.Add(player);
             }
         }
+
         public void MoveToken(Token token, int steps)
         {
             if (token.State == TokenState.AtStart)
@@ -69,7 +82,9 @@ namespace LudoAPI.Models
 
                 foreach (var token in player.Tokens)
                 {
-                    if (token.State == TokenState.OnBoard && token.Position == movingToken.Position)
+                    if (token.State == TokenState.OnBoard &&
+                        token.Position == movingToken.Position &&
+                        !Board.IsSafeZone(token.Position.Value)) // Check if the position is not a safe zone
                     {
                         token.State = TokenState.AtStart;
                         token.Position = null; // Reset position
@@ -94,5 +109,34 @@ namespace LudoAPI.Models
             Dice.ResetConsecutiveSixes();
             CurrentPlayerIndex = (CurrentPlayerIndex + 1) % Players.Count;
         }
+        public bool HasPlayerWon(Player player)
+        {
+            return player.Tokens.All(token => token.State == TokenState.InHome);
+        }
+
+        public void CheckForWinner()
+        {
+            foreach (var player in Players)
+            {
+                if (HasPlayerWon(player))
+                {
+                    Winner = player;
+                    break;
+                }
+            }
+        }
+        public void EndTurn()
+        {
+            CheckForWinner();
+            if (Winner == null)
+            {
+                NextTurn();
+            }
+            else
+            {
+                Console.WriteLine($"Player {Players.IndexOf(Winner) + 1} has won the game!");
+            }
+        }
+
     }
 }

@@ -18,8 +18,11 @@ namespace Models
             Result = random.Next(1, 7);
             return Result;
         }
+        private Game _game; // Add a reference to the Game instance
 
         private Dice _dice = new Dice();
+
+
 
         public int RollDie()
         {
@@ -33,7 +36,7 @@ namespace Models
                 {
                     // End the turn after three consecutive sixes
                     ResetConsecutiveSixes();
-                    Game.NextTurn();
+                    _game.NextTurn();
                     return roll;
                 }
 
