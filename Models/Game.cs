@@ -12,6 +12,7 @@ namespace LudoAPI.Models
         private Dice Dice { get; set; }
         public Player Winner { get; private set; }
         public GameSettings Settings { get; private set; }
+        public int ConsecutiveSixes { get; set; }
 
         public Game(GameSettings settings)
         {
@@ -40,7 +41,7 @@ namespace LudoAPI.Models
             }
         }
 
-        public void MoveToken(Token token, int steps)
+        public void MoveToken(Player player, Token token, int steps)
         {
             if (token.State == TokenState.AtStart)
                 throw new InvalidOperationException("Token must enter the board first.");
