@@ -1,3 +1,4 @@
+using LudoAPI.Models;
 using Models;
 namespace Ludo_tests
 {
@@ -32,12 +33,55 @@ namespace Ludo_tests
             // Assert
             if (dice.Result == 6)
             {
-                Assert.AreEqual("You rolled a 6", result);
+                Assert.AreEqual("you rolled a 6", result);
             }
             else
             {
-                Assert.AreEqual($"You rolled a {dice.Result}", result);
+                Assert.AreEqual($"you rolled a {dice.Result}", result);
             }
         }
+    //    [TestMethod]
+    //    public void RollDie_ShouldAllowExtraTurnOnSix()
+    //    {
+    //        // Arrange
+    //        var game = new Game();
+    //        game.Initialize();
+    //        var dice = new Mock<Dice>();
+    //        dice.SetupSequence(d => d.Roll()).Returns(6).Returns(4); // Simulate rolling a 6 and then a 4
+    //        game.SetDice(dice.Object);
+
+    //        // Act
+    //        int firstRoll = game.RollDie();
+    //        int secondRoll = game.RollDie();
+
+    //        // Assert
+    //        Assert.AreEqual(6, firstRoll);
+    //        Assert.AreEqual(4, secondRoll);
+    //        Assert.AreEqual(0, game.ConsecutiveSixes); // Counter should reset after non-six
+    //    }
+    //    [TestMethod]
+    //    public void RollDie_ShouldEndTurnAfterThreeConsecutiveSixes()
+    //    {
+    //        // Arrange
+    //        var game = new Game();
+    //        var dice = new Dice();
+    //        game.Initialize();
+    //        var dice = new Mock<Dice>();
+    //        dice.SetupSequence(d => d.Roll()).Returns(6).Returns(6).Returns(6); // Simulate rolling three sixes
+    //        game.SetDice(dice.Object);
+
+    //        // Act
+    //        int firstRoll = game.RollDie();
+    //        int secondRoll = game.RollDie();
+    //        int thirdRoll = game.RollDie();
+
+    //        // Assert
+    //        Assert.AreEqual(6, firstRoll);
+    //        Assert.AreEqual(6, secondRoll);
+    //        Assert.AreEqual(6, thirdRoll);
+    //        Assert.AreEqual(0, game.ConsecutiveSixes); // Counter should reset after three sixes
+    //        Assert.AreNotEqual(game.CurrentPlayer, game.Players[0]); // Turn should advance
+    //    }
+
     }
 }
