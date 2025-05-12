@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Ludo_tests
 {
-    internal class TokenTest
+    public class TokenTest
     {
         [TestMethod]
         public void MoveToken_ShouldMoveTokenToBoardOnRollOfSix()
