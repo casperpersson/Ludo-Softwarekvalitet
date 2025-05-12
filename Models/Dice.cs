@@ -18,15 +18,20 @@ namespace Models
             Result = random.Next(1, 7);
             return Result;
         }
-        private Game _game; // Add a reference to the Game instance
+        private Game? _game; // Make nullable to satisfy the compiler
 
-        private Dice _dice = new Dice();
+        public Dice() { }
 
-
-
-        public int RollDie()
+        public Dice(Game game)
         {
-            int roll = _dice.Roll();
+            _game = game;
+        }
+
+
+
+        public int RollDie(Dice dice)
+        {
+            int roll = dice.Roll();
 
             if (roll == 6)
             {

@@ -1,6 +1,8 @@
 ﻿namespace LudoAPI.Services.Interfaces
 {
-    public class IDiceService
+    public interface IDiceService
     {
+        int Roll();
+        void ResetConsecutiveSixes();
     }
 }
